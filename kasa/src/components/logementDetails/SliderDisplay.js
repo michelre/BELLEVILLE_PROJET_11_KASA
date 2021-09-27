@@ -1,11 +1,12 @@
 import {Component} from 'react'
-
+import flecheRight from '../../public/media/fleche-right.png'
+import flecheLeft from '../../public/media/fleche-left.png'
 
 class SliderDisplay extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             currentImageIndex: 1
         };
     }
@@ -33,29 +34,29 @@ class SliderDisplay extends Component {
 
         const { logementData } = this.props;
         const length = logementData.pictures.length;
-    
+
         // Affichage des photos
         let showImages;
         if(logementData){
             showImages = logementData.pictures.map((photo) => {
                 return <img src={photo} alt={photo} key={photo} className="imageSlider"/>
-            })    
+            })
         } else{
             showImages = "loading"
         }
-        
+
         //Affichages des flèches
-        let arrowRight =  <img src="../media/fleche-right.png" alt="fleche next" className="arrow-right" onClick={() => this.onNextSlide()} />
+        let arrowRight =  <img src={flecheRight} alt="fleche next" className="arrow-right" onClick={() => this.onNextSlide()} />
             if(logementData.pictures.length === 1){
                 arrowRight = "";
             }
 
-        let arrowLeft =  <img src="../media/fleche-left.png" alt="fleche previous" className="arrow-left" onClick={() => this.onPrevSlide()} />
+        let arrowLeft =  <img src={flecheLeft} alt="fleche previous" className="arrow-left" onClick={() => this.onPrevSlide()} />
             if(logementData.pictures.length === 1){
                 arrowLeft = "";
             }
-        
-            
+
+
         return <div className="slider">
                     <div className="slider-window">
                         {arrowRight}

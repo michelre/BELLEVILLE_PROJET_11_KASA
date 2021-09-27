@@ -8,34 +8,34 @@ import SliderDisplay from '../components/logementDetails/SliderDisplay';
 
 
 class LogementDetails extends Component {
-   
+
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             logementData : {},
             error : null,
             isLoaded :false,
         };
     }
-    
+
     componentDidMount() {
         const { id } = this.props.match.params
-        
-        fetch(`http://localhost:3000//annonces.json`)
+
+        fetch(process.env.PUBLIC_URL + '/annonces.json')
             .then(res => res.json())
             .then((result) => {this.setState({
-                isLoaded : true, 
+                isLoaded : true,
                 logementData : result.find((annonce) => annonce.id === id )} )
             },
             (error) => {this.setState({
-                isLoaded: true, 
+                isLoaded: true,
                 error});
             }
         )
     }
-    
+
     render(){
-       
+
             const { error, isLoaded, logementData} = this.state;
 
             if (error) {
@@ -45,7 +45,7 @@ class LogementDetails extends Component {
                 } else {
 
             return(
-                
+
                 <div className="home">
                     <Logo />
                     <Navigation />

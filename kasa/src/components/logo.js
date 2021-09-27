@@ -1,11 +1,12 @@
 import {Component} from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../public/logo_kasa.png'
 
 class Logo extends Component {
     render(){
         return(
             <div className="logo">
-                <Link to={`/home`}> <img src="../logo_kasa.png" alt="logo de kasa"/></Link>
+                <Link to={`/home`}> <img src={logo} alt="logo de kasa"/></Link>
             </div>
         )
     }
